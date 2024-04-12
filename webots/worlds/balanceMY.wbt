@@ -1,0 +1,465 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/UnevenTerrain.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/stairs/protos/StraightStairs.proto"
+
+WorldInfo {
+  basicTimeStep 2
+}
+Viewpoint {
+  orientation 0.1856517026379243 0.9494580028240049 -0.2531065905524618 0.682886912756218
+  position -3.88299924089732 1.3649463983891086 3.7726733068598572
+}
+UnevenTerrain {
+  size 50 50 0.1
+}
+Robot {
+  translation 0 0 0.75
+  children [
+    DEF accelerometer Accelerometer {
+    }
+    DEF gyro Gyro {
+    }
+    DEF imu InertialUnit {
+      name "imu"
+    }
+    DEF LB HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.7
+        axis 0 1 0
+        anchor -0.054 0.1 0
+      }
+      device [
+        DEF LB_Joint_Motor RotationalMotor {
+          name "LB_Joint_Motor"
+          minPosition 0.01
+          maxPosition 2
+          maxTorque 90
+        }
+        DEF LB_Joint_Pos_Sensor PositionSensor {
+          name "LB_Joint_Pos_Sensor"
+        }
+      ]
+      endPoint DEF Active_Leg Solid {
+        translation -0.10231632654282682 0.1 -0.05736316404633661
+        rotation 0 1 0 0.7000000000000002
+        children [
+          DEF Link_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position -1.35
+              axis 0 1 0
+              anchor 0 0 -0.075
+            }
+            endPoint DEF Slave_Leg Solid {
+              translation 0.12196541972833239 0 -0.10237583588663017
+              rotation 0 -1 0 1.35
+              children [
+                DEF Link_Wheel HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 0 -0.125
+                  }
+                  endPoint SolidReference {
+                    solidName "L_Wheel"
+                  }
+                }
+                DEF Slave_Leg Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.02 0.01 0.25
+                  }
+                }
+              ]
+              name "Slave_Leg"
+              boundingObject USE Slave_Leg
+              physics Physics {
+                density -1
+                mass 0.305
+              }
+            }
+          }
+          DEF Active_Leg Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.01 0.15
+            }
+          }
+        ]
+        name "Active_Leg"
+        boundingObject USE Active_Leg
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF RB HingeJoint {
+      jointParameters HingeJointParameters {
+        position 0.7
+        axis 0 1 0
+        anchor -0.054 -0.1 0
+      }
+      device [
+        DEF RB_Joint_Motor RotationalMotor {
+          name "RB_Joint_Motor"
+          minPosition 0.01
+          maxPosition 2
+          maxTorque 90
+        }
+        DEF RB_Joint_Pos_Sensor PositionSensor {
+          name "RB_Joint_Pos_Sensor"
+        }
+      ]
+      endPoint DEF Active_Leg Solid {
+        translation -0.10231632654282682 -0.1 -0.05736316404633661
+        rotation 0 1 0 0.7000000000000002
+        children [
+          DEF Link_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position -1.35
+              axis 0 1 0
+              anchor 0 0 -0.075
+            }
+            endPoint DEF Slave_Leg Solid {
+              translation 0.12196541972833239 0 -0.10237583588663017
+              rotation 0 -1 0 1.35
+              children [
+                DEF Link_Wheel HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 0 -0.125
+                  }
+                  endPoint SolidReference {
+                    solidName "R_Wheel"
+                  }
+                }
+                DEF Slave_Leg Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.02 0.01 0.25
+                  }
+                }
+              ]
+              name "Slave_Leg"
+              boundingObject USE Slave_Leg
+              physics Physics {
+                density -1
+                mass 0.305
+              }
+            }
+          }
+          DEF Active_Leg Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.01 0.15
+            }
+          }
+        ]
+        name "Active_Leg(3)"
+        boundingObject USE Active_Leg
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF LF HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.7
+        axis 0 1 0
+        anchor 0.054 0.1 0
+      }
+      device [
+        DEF LF_Joint_Motor RotationalMotor {
+          name "LF_Joint_Motor"
+          minPosition -2
+          maxPosition -0.01
+          maxTorque 90
+        }
+        DEF LF_Joint_Pos_Sensor PositionSensor {
+          name "LF_Joint_Pos_Sensor"
+        }
+      ]
+      endPoint DEF Active_Leg Solid {
+        translation 0.10231632654282682 0.1 -0.05736316404633661
+        rotation 0 -1 0 0.7000000000000002
+        children [
+          DEF Link_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position 1.35
+              axis 0 1 0
+              anchor 0 0 -0.075
+            }
+            endPoint DEF Slave_Leg Solid {
+              translation -0.12196541972833239 0 -0.10237583588663017
+              rotation 0 1 0 1.35
+              children [
+                DEF LD HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 0 -0.125
+                  }
+                  device [
+                    DEF L_Driven_Motor RotationalMotor {
+                      name "L_Driven_Motor"
+                      maxTorque 50
+                    }
+                    DEF L_Driven_Pos_Sensor PositionSensor {
+                      name "L_Driven_Pos_Sensor"
+                    }
+                  ]
+                  endPoint DEF L_Wheel Solid {
+                    translation 0 0 -0.125
+                    rotation 1 0 0 1.5709000000000002
+                    children [
+                      DEF L_Wheel Shape {
+                        appearance PBRAppearance {
+                          baseColor 1 1 0
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.015
+                          radius 0.06225
+                        }
+                      }
+                    ]
+                    name "L_Wheel"
+                    boundingObject USE L_Wheel
+                    physics Physics {
+                      density -1
+                      mass 0.305
+                    }
+                  }
+                }
+                DEF Slave_Leg Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.02 0.01 0.25
+                  }
+                }
+              ]
+              name "Slave_Leg"
+              boundingObject USE Slave_Leg
+              physics Physics {
+                density -1
+                mass 0.56
+              }
+            }
+          }
+          DEF Active_Leg Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.01 0.15
+            }
+          }
+        ]
+        name "Active_Leg(1)"
+        boundingObject USE Active_Leg
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF RF HingeJoint {
+      jointParameters HingeJointParameters {
+        position -0.7
+        axis 0 1 0
+        anchor 0.054 -0.1 0
+      }
+      device [
+        DEF RF_Joint_Motor RotationalMotor {
+          name "RF_Joint_Motor"
+          minPosition -2
+          maxPosition -0.01
+          maxTorque 90
+        }
+        DEF RF_Joint_Pos_Sensor PositionSensor {
+          name "RF_Joint_Pos_Sensor"
+        }
+      ]
+      endPoint DEF Active_Leg Solid {
+        translation 0.10231632654282682 -0.1 -0.05736316404633661
+        rotation 0 -1 0 0.7000000000000002
+        children [
+          DEF Link_Joint HingeJoint {
+            jointParameters HingeJointParameters {
+              position 1.35
+              axis 0 1 0
+              anchor 0 0 -0.075
+            }
+            endPoint DEF Slave_Leg Solid {
+              translation -0.12196541972833239 0 -0.10237583588663017
+              rotation 0 1 0 1.35
+              children [
+                DEF RD HingeJoint {
+                  jointParameters HingeJointParameters {
+                    axis 0 1 0
+                    anchor 0 0 -0.125
+                  }
+                  device [
+                    DEF R_Driven_Motor RotationalMotor {
+                      name "R_Driven_Motor"
+                      maxTorque 50
+                    }
+                    DEF R_Driven_Pos_Sensor PositionSensor {
+                      name "R_Driven_Pos_Sensor"
+                    }
+                  ]
+                  endPoint DEF R_Wheel Solid {
+                    translation 0 0 -0.125
+                    rotation 1 0 0 1.5709000000000002
+                    children [
+                      DEF R_Wheel Shape {
+                        appearance PBRAppearance {
+                          baseColor 1 1 0
+                          roughness 1
+                          metalness 0
+                        }
+                        geometry Cylinder {
+                          height 0.015
+                          radius 0.06225
+                        }
+                      }
+                    ]
+                    name "R_Wheel"
+                    boundingObject USE R_Wheel
+                    physics Physics {
+                      density -1
+                      mass 0.5
+                    }
+                  }
+                }
+                DEF Slave_Leg Shape {
+                  appearance PBRAppearance {
+                    baseColor 0 0 1
+                    roughness 1
+                    metalness 0
+                  }
+                  geometry Box {
+                    size 0.02 0.01 0.25
+                  }
+                }
+              ]
+              name "Slave_Leg"
+              boundingObject USE Slave_Leg
+              physics Physics {
+                density -1
+                mass 0.305
+              }
+            }
+          }
+          DEF Active_Leg Shape {
+            appearance PBRAppearance {
+              baseColor 0 0 1
+              roughness 1
+              metalness 0
+            }
+            geometry Box {
+              size 0.02 0.01 0.15
+            }
+          }
+        ]
+        name "Active_Leg(2)"
+        boundingObject USE Active_Leg
+        physics Physics {
+          density -1
+          mass 0.2
+        }
+      }
+    }
+    DEF Body Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 0.2 0.2 0.1
+      }
+    }
+  ]
+  name "Body"
+  boundingObject USE Body
+  physics Physics {
+    density -1
+    mass 5.215
+  }
+  controller "balance_controller"
+}
+DEF Slope Solid {
+  translation 7 0 0
+  rotation 0 1 0 -0.35
+  children [
+    DEF Slope Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 2.4 10 0.003
+      }
+    }
+  ]
+  boundingObject USE Slope
+}
+DEF Step Solid {
+  children [
+    DEF Step Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 2 2 0.7
+      }
+    }
+  ]
+  name "solid(2)"
+  boundingObject USE Step
+}
+StraightStairs {
+  translation -1.6 0 0
+  nSteps 2
+}
+DEF Step2 Solid {
+  translation 3 4 0
+  children [
+    DEF Step2 Shape {
+      appearance PBRAppearance {
+      }
+      geometry Box {
+        size 3 3 0.4
+      }
+    }
+  ]
+  name "Step2"
+  boundingObject USE Step2
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}

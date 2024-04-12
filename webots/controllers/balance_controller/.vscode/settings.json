@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "balance.h": "c",
+        "pid.h": "c",
+        "robot.h": "c"
+    }
+}

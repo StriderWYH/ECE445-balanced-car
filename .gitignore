@@ -1,0 +1,9 @@
+# Build and Release Folders
+/webots/controllers/balance_controller/build
+
+# Other files and folders
+/matlab/slprj
+
+# Executables
+*.exe
+*.wbproj

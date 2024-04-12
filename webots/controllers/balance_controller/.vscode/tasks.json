@@ -1,0 +1,38 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "cppbuild",
+			"label": "C/C++: g++.exe 生成活动文件",
+			"command": "C:\\msys64\\mingw64\\bin\\g++.exe",
+			"args": [
+				"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-I",
+				"D:\\Webot\\eigen3\\Eigen",
+				"-I",
+				"D:\\Webot\\Webots\\include\\controller\\cpp",
+				"-I",
+                "D:\\Webot\\Webots\\include\\controller\\c",
+                "-L",
+				"D:\\Webot\\eigen3\\Eigen",
+				"-L",
+				"D:\\Webot\\Webots\\lib\\controller",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe"
+			],
+			"options": {
+				"cwd": "${fileDirname}"
+			},
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"detail": "编译器: \"C:\\msys64\\mingw64\\bin\\g++.exe\""
+		}
+	]
+}
