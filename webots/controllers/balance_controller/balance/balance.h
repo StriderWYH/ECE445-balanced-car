@@ -26,6 +26,11 @@
 // 任务运行步长
 #define TIME_STEP 2
 
+// 支持力参数
+#define MAX_FLY_F 200.0f
+#define MIN_FLY_F 20.0f
+#define NORMAL_F_INIT 110.0f
+#define ROLL_PARA 100 // 300 initially
 // 设备
 typedef struct
 {

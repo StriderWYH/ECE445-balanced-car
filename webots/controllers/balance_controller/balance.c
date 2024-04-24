@@ -166,7 +166,7 @@ void BalanceInit()
     chassis.yaw_last = 0;
     chassis.yaw_round_count = 0;
     // 支持力初始化
-    l_side.normal_force = r_side.normal_force = 110;
+    l_side.normal_force = r_side.normal_force = NORMAL_F_INIT;
     // 连杆参数初始化
     l_side.theta_w_last = r_side.theta_w_last = 0;
     l_side.legd_last = r_side.legd_last = 0;
@@ -330,7 +330,7 @@ static void LegControl()
     // 动态调整重力补偿
     GravityCompAdjust(&l_side, &r_side);
 
-    static float roll_extra_comp_p = 300;
+    static float roll_extra_comp_p = ROLL_PARA;
     float roll_comp = roll_extra_comp_p * chassis.roll;
     l_side.F_leg = PIDCalculate(&leglen_pid_l, l_side.height, l_side.target_len) + l_side.gravity_comp - roll_comp;
     r_side.F_leg = PIDCalculate(&leglen_pid_r, r_side.height, r_side.target_len) + r_side.gravity_comp + roll_comp;

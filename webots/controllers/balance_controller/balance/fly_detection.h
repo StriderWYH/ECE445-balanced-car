@@ -26,12 +26,11 @@ void NormalForceSolve(LinkNPodParam *p, ChassisParam *chassis, float dt)
 // 动态调整重力补偿
 void GravityCompAdjust(LinkNPodParam *lp, LinkNPodParam *rp)
 {
-    if(lp->normal_force < 20.0f && rp->normal_force < 20.0f)
+    if(lp->normal_force < MIN_FLY_F/3 && rp->normal_force < MIN_FLY_F/3)
         lp->gravity_comp = rp->gravity_comp = 65.0f;
 
-    else if(lp->normal_force > 60.0f && rp->normal_force > 60.0f)
+    else if(lp->normal_force > MAX_FLY_F/3 && rp->normal_force > MAX_FLY_F/3)
         lp->gravity_comp = rp->gravity_comp = 50.0f;
-
     else
         lp->gravity_comp = rp->gravity_comp = 60.0f;
 }
